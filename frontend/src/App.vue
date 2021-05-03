@@ -1,16 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div>
+    {{ query }}
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import { defineComponent, ref, onMounted } from 'vue'
+import axios from 'axios'
 
 export default defineComponent({
   name: 'App',
-  components: {
-    HelloWorld
+  setup () {
+    const query = ref('')
+
+    onMounted(async () => {
+      try {
+        const response = await axios.get('http://localhost:8001/example')
+        query.value = response.data
+      } catch (error) {
+        query.value = error
+      }
+    })
+
+    return {
+      query
+    }
   }
 })
 </script>
