@@ -32,7 +32,10 @@ services:
       #- "5601:5601"
       #- "9200:9200"
       #- "5044:5044"
-  grafa:
+  grafana:
     image: grafana/grafana:latest
+    build:
+      context: .
+      network: host
     ports:
       - "7000:3000"
