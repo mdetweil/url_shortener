@@ -1,23 +1,28 @@
 version: '3.4'
 services:
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      network: host
     ports:
-      - '8080:3000'
+      - '8080:8080'
     depends_on:
       - nginx
     volumes:
       - ./frontend:/app
-    links:
-      - nginx
+      - /app/node_modules/
+    environment:
+      - VUE_APP_SERVER_URL='http://nginx/example'
   api:
-    build: ./api
+    build:
+      context: ./api
+      network: host
     expose:
       - '3000'
   nginx:
-    build: ./nginx
+    build:
+      context: ./nginx
+      network: host
     ports:
       - '8001:80'
     restart: always
-    links:
-      - api

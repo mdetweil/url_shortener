@@ -2,12 +2,12 @@ FROM node:lts-alpine
 
 WORKDIR /app
 
-COPY package.json ./
-COPY yarn.lock ./
+COPY package.json yarn.lock ./
+
 RUN yarn
 
-COPY . .
+COPY . /app
 
-EXPOSE 3000
+EXPOSE 8080
 
-CMD [ "yarn", "dev" ]
+CMD [ "yarn", "serve" ]
