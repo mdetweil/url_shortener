@@ -26,3 +26,13 @@ services:
     ports:
       - '8001:80'
     restart: always
+  #elk:
+    #image: sebp/elk
+    #ports:
+      #- "5601:5601"
+      #- "9200:9200"
+      #- "5044:5044"
+  grafa:
+    image: grafana/grafana:latest
+    ports:
+      - "7000:3000"
