@@ -3,7 +3,6 @@ services:
   frontend:
     build:
       context: ./frontend
-      network: host
     ports:
       - '8080:8080'
     depends_on:
@@ -16,15 +15,16 @@ services:
   api:
     build:
       context: ./api
-      network: host
     expose:
       - '3000'
     depends_on:
       - redis
+    volumes:
+      - ./api:/app
+      - /app/node_modules
   nginx:
     build:
       context: ./nginx
-      network: host
     ports:
       - '8001:80'
     restart: always
@@ -36,13 +36,11 @@ services:
       #- "5044:5044"
   grafana:
     image: grafana/grafana:latest
-    build:
-      context: .
-      network: host
     ports:
       - "8002:3000"
   redis:
-    image: redis
-    network_mode: host
+    image: redis:alpine
     ports:
       - "6379:6379"
+    expose:
+      - "6379"

@@ -3,12 +3,17 @@
 module.exports = async function (fastify, opts) {
   fastify.get("/", async function (request, reply) {
     const { redis } = fastify;
-    redis.set("hello", "world", (err) => {
+    try {
+      await redis.set("hello", "world");
+    } catch (err) {
       console.log("error", err);
-    });
+    }
 
-    redis.get("hello", (err, val) => {
-      reply.send(err || val);
-    });
+    try {
+      const result = await redis.get("hello");
+      return result;
+    } catch (err) {
+      return err;
+    }
   });
 };
