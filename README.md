@@ -8,3 +8,7 @@ frontend located:
 
 api located:
 `localhost:8001`
+
+
+next time:
+https://digitalis.io/blog/apache-cassandra/containerized-cassandra-cluster-for-local-testing/
