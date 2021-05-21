@@ -11,7 +11,6 @@ import { defineComponent, ref, onMounted } from 'vue'
 import axios from 'axios'
 
 export default defineComponent({
-  name: 'App',
   setup () {
     const query = ref('')
 
