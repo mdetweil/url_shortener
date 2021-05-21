@@ -21,7 +21,8 @@
     "fastify-metrics": "^7.1.0",
     "fastify-plugin": "^3.0.0",
     "fastify-redis": "^4.3.0",
-    "fastify-sensible": "^3.1.0"
+    "fastify-sensible": "^3.1.0",
+    "short-uuid": "^4.2.0"
   },
   "devDependencies": {
     "tap": "^14.11.0"

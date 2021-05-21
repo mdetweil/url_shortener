@@ -1,6 +1,6 @@
 FROM node:lts-alpine
 
-WORKDIR /urs/src/app
+WORKDIR /app
 RUN npm install -g fastify-cli
 
 COPY package.json ./
